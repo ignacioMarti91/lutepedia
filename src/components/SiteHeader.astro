@@ -1,0 +1,72 @@
+---
+interface Props {
+  currentPage?: string;
+  base: string;
+}
+
+const { currentPage = "", base } = Astro.props;
+const links = [
+  { label: "Periodismo", href: `${base}/listado.html`, key: "periodismo" },
+  { label: "Producción", href: `${base}/produccion.html`, key: "produccion" },
+  { label: "Blog", href: `${base}/blog.html`, key: "blog" },
+  { label: "Sobre mí", href: `${base}/sobre-mi.html`, key: "sobre-mi" },
+  { label: "Contacto", href: `${base}/contacto.html`, key: "contacto" },
+];
+---
+
+<header class="site-header">
+  <a class="brand" href={`${base}/index.html`}>Lutepedia</a>
+  <nav class="nav" aria-label="Principal">
+    {links.map(({ label, href, key }) => (
+      <a href={href} aria-current={currentPage === key ? "page" : undefined}>{label}</a>
+    ))}
+    <span class="hand future-link">talleres y tienda, pronto</span>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 32px;
+    padding: 18px 48px;
+    border-bottom: 4px double #1c1b2e;
+  }
+
+  .brand {
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: 40px;
+    line-height: 1;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+  }
+
+  .future-link {
+    padding: 0 12px;
+    border: 2px dashed #4a4466;
+    color: #4a4466;
+    font-size: 22px;
+    transform: rotate(-2deg);
+  }
+
+  @media (max-width: 720px) {
+    .site-header {
+      padding: 14px 20px;
+    }
+
+    .future-link {
+      font-size: 19px;
+    }
+  }
+</style>

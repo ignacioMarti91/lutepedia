@@ -1,0 +1,49 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { projectKindLabels } from "../../data/content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects", ({ data }) => !data.draft);
+  return projects.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<SiteLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  currentPage="produccion"
+>
+  <article class="wrap narrow">
+    <p class="crumbs"><a href={`${base}/index.html`}>Inicio</a> / <a href={`${base}/produccion.html`}>Producción</a> / {entry.data.title}</p>
+    <div class="paper rel">
+      <div class="pp"></div><div class="tape"></div>
+      <div class="in">
+        <p><span class="tg">{projectKindLabels[entry.data.kind]}</span></p>
+        <h1 class="page-title">{entry.data.title}</h1>
+        {entry.data.client && <p class="byline">Proyecto para {entry.data.client}</p>}
+        <div class="prose">
+          <p>{entry.data.description}</p>
+          {entry.data.challenge && <><h2>El desafío</h2><p>{entry.data.challenge}</p></>}
+          {entry.data.approach && <><h2>El trabajo</h2><p>{entry.data.approach}</p></>}
+          {entry.data.results && <><h2>Resultados</h2><p>{entry.data.results}</p></>}
+          <Content />
+        </div>
+      </div>
+    </div>
+  </article>
+</SiteLayout>
+
+<style>
+  .paper .tape { top: -14px; left: 50%; margin-left: -56px; transform: rotate(-3deg); }
+  .paper .in { padding: 44px 48px 40px; }
+  .byline { margin: 0 0 24px; color: #4a4466; font-family: "Special Elite", "Courier New", monospace; }
+  @media (max-width: 720px) { .paper .in { padding: 28px 22px; } }
+</style>

@@ -1,0 +1,256 @@
+---
+import { getCollection } from "astro:content";
+import EntryCard from "../components/EntryCard.astro";
+import HanddrawnPortrait from "../components/HanddrawnPortrait.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { postKindLabels } from "../data/content";
+
+const posts = await getCollection("posts", ({ data }) => !data.draft);
+const classes = await getCollection("classes", ({ data }) => !data.draft);
+const featured = [...posts, ...classes].filter((entry) => entry.data.featured);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<SiteLayout
+  title="Periodismo, clases y otras obsesiones"
+  description="El archivo de Lucía Tedesco: periodismo, producción, clases y escritura."
+>
+  <section class="hero">
+    <div class="hero-copy">
+      <h1 class="hero-title">
+        <span class="w" style="transform:rotate(-1.6deg)">Periodismo,</span>
+        <span class="w cobalt" style="transform:rotate(1.2deg) translateY(8px)">clases</span>
+        <span class="w" style="transform:rotate(-.8deg)">y otras</span>
+        <span class="w" style="transform:rotate(1.8deg) translateY(4px)">obsesiones.</span>
+      </h1>
+      <svg viewBox="0 0 600 30" aria-hidden="true" focusable="false" class="underline">
+        <path d="M4 18 C60 4 90 28 150 14 S250 6 300 18 S420 28 470 12 S560 8 596 16" fill="none" stroke="#D8341C" stroke-width="7" stroke-linecap="round"></path>
+      </svg>
+      <p class="hero-lead">Soy Lucía Tedesco: periodista, productora de contenidos, docente y consultora de marketing. Este es el archivo de lo que escribo, produzco y enseño, con autoría y fecha.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href={`${base}/listado.html`}>Leer las crónicas</a>
+        <a class="btn secondary" href={`${base}/blog.html#clases`}>Ver las clases</a>
+      </div>
+    </div>
+    <div class="portrait-card rel">
+      <div class="pp"></div>
+      <div class="tape"></div>
+      <div class="in">
+        <HanddrawnPortrait />
+        <p class="hand portrait-caption">yo, dibujada (sin foto)</p>
+      </div>
+      <div class="stamp">hecho<br />a mano</div>
+    </div>
+  </section>
+
+  <div class="hz" aria-hidden="true"></div>
+
+  <section class="latest section-pad">
+    <div class="section-heading">
+      <h2>Lo último</h2>
+      <span class="hand">elegido a mano, sin algoritmo</span>
+    </div>
+    {featured.length > 0 ? (
+      <div class="grid">
+        {featured.map((entry) => (
+          <EntryCard
+            title={entry.data.title}
+            description={entry.data.description}
+            date={entry.data.pubDate}
+            tags={entry.data.tags}
+            kind={entry.collection === "classes" ? "Ficha de clase" : postKindLabels[entry.data.kind]}
+            href={`/${entry.collection === "classes" ? "clases" : "pieza"}/${entry.id}.html`}
+          />
+        ))}
+      </div>
+    ) : (
+      <div class="paper rel empty-note">
+        <div class="pp"></div>
+        <div class="in">
+          <p class="hand">El cuaderno está listo para las primeras piezas.</p>
+          <p>Las publicaciones se agregan como archivos Markdown; al quitarles el estado de borrador, aparecen aquí y en su sección.</p>
+          <a class="btn secondary" href={`${base}/listado.html`}>Explorar secciones</a>
+        </div>
+      </div>
+    )}
+  </section>
+
+  <section class="section-pad start">
+    <h2>Por dónde empezar</h2>
+    <div class="start-grid">
+      <a class="start-card rel" href={`${base}/listado.html`}>
+        <div class="pp"></div><div class="in">
+          <h3 class="tomato">Periodismo</h3>
+          <p class="hand">Crónicas · Radar</p>
+          <p>El anecdotario y la curaduría de temas que sigo.</p>
+        </div>
+      </a>
+      <a class="start-card rel" href={`${base}/produccion.html`}>
+        <div class="pp"></div><div class="in">
+          <h3 class="cobalt-bg">Producción</h3>
+          <p class="hand">Negocios · Digital · Audiovisual</p>
+          <p>Proyectos de estrategia, contenidos y producción.</p>
+        </div>
+      </a>
+      <a class="start-card rel" href={`${base}/blog.html`}>
+        <div class="pp"></div><div class="in">
+          <h3 class="mustard">Blog</h3>
+          <p class="hand">Relatos · Clases</p>
+          <p>Escritura literaria y materiales para aprender y enseñar.</p>
+        </div>
+      </a>
+      <a class="start-card rel" href={`${base}/sobre-mi.html`}>
+        <div class="pp"></div><div class="in">
+          <h3 class="pink">Sobre mí</h3>
+          <p class="hand">CV · Servicios</p>
+          <p>Trayectoria y formas de trabajar conmigo.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="classes-promo section-pad">
+    <div>
+      <p class="hand">Apuntes para pensar en voz alta</p>
+      <h2>Las clases, en fichas</h2>
+      <p>Ideas centrales, por qué importan hoy y fragmentos de clase para estudiantes y docentes.</p>
+      <a class="btn primary" href={`${base}/blog.html#clases`}>Ver las clases</a>
+    </div>
+    <div class="notebook rel">
+      <div class="pp"></div>
+      <div class="in">
+        <p class="hand">Una ficha por autor o autora</p>
+        <ul><li>Idea central</li><li>Por qué importa hoy</li><li>Fragmento de clase</li><li>Enlaces para seguir leyendo</li></ul>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .hero {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 48px;
+    padding: 64px 48px 72px;
+  }
+
+  .hero-copy {
+    flex: 1 1 580px;
+    min-width: 0;
+  }
+
+  .hero-title {
+    margin: 0;
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: clamp(52px, 8.4vw, 120px);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+
+  .cobalt { color: #2447c9; }
+  .underline { display: block; width: min(560px, 90%); height: auto; margin-top: 6px; filter: url(#wob); }
+
+  .hero-lead {
+    max-width: 32em;
+    margin: 30px 0 32px;
+    font-size: 22px;
+    line-height: 1.55;
+  }
+
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+  .primary { background: #d8341c; color: #fff; }
+  .secondary { background: #f8f2e2; color: #1c1b2e; }
+
+  .portrait-card {
+    flex: 0 1 380px;
+    min-width: 260px;
+    margin: 0 auto;
+    transform: rotate(2deg);
+  }
+
+  .portrait-card .tape {
+    top: -14px;
+    left: 50%;
+    margin-left: -56px;
+    transform: rotate(-4deg);
+  }
+
+  .portrait-card .in { padding: 22px 22px 18px; }
+  .portrait-caption { margin: 8px 0 0; font-size: 26px; line-height: 1.1; color: #4a4466; }
+  .stamp {
+    position: absolute;
+    z-index: 4;
+    top: 34px;
+    right: -18px;
+    display: grid;
+    width: 98px;
+    height: 98px;
+    place-items: center;
+    transform: rotate(9deg);
+    border: 2.5px solid #1c1b2e;
+    border-radius: 50%;
+    background: #ebb01e;
+    box-shadow: 3px 3px 0 #1c1b2e;
+    font-family: "Special Elite", "Courier New", monospace;
+    font-size: 15px;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .hz { position: relative; z-index: 5; }
+  .section-pad { position: relative; z-index: 5; padding: 80px 48px; }
+  .section-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; margin-bottom: 36px; }
+  .section-heading h2, .start > h2, .classes-promo h2 {
+    margin: 0;
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: clamp(42px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1;
+  }
+  .section-heading .hand, .classes-promo .hand { color: #4a4466; font-size: 28px; }
+  .empty-note { max-width: 760px; padding: 28px; }
+  .empty-note .in > :first-child { margin-top: 0; color: #4a4466; font-size: 28px; }
+  .empty-note .btn { margin-top: 8px; }
+
+  .start-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px; margin-top: 36px; }
+  .start-card { color: #1c1b2e; text-decoration: none; }
+  .start-card .in { height: 100%; padding: 0 0 18px; }
+  .start-card h3 {
+    margin: 0;
+    padding: 14px 20px;
+    color: #fff;
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .start-card .in > p { margin: 14px 20px 0; }
+  .start-card .hand { font-size: 25px; }
+  .tomato { background: #d8341c; }
+  .cobalt-bg { background: #2447c9; }
+  .mustard { background: #ebb01e; color: #1c1b2e !important; }
+  .pink { background: #f3a9c8; color: #1c1b2e !important; }
+
+  .classes-promo { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; padding-top: 8px; }
+  .classes-promo > div { flex: 1 1 320px; min-width: 0; }
+  .classes-promo p:not(.hand) { max-width: 32em; font-size: 21px; }
+  .classes-promo .btn { margin-top: 10px; }
+  .notebook .in {
+    padding: 30px 36px;
+    background: repeating-linear-gradient(transparent 0 33px, rgba(36,71,201,.22) 33px 34px);
+  }
+  .notebook .hand { margin: 0; }
+  .notebook ul { margin-bottom: 0; line-height: 34px; }
+
+  @media (max-width: 720px) {
+    .hero { gap: 36px; padding: 40px 20px 52px; }
+    .section-pad { padding: 56px 20px; }
+    .hero-title { font-size: clamp(48px, 13vw, 76px); }
+    .portrait-card { flex-basis: 330px; }
+    .stamp { right: -8px; }
+  }
+</style>

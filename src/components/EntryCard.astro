@@ -1,0 +1,64 @@
+---
+import { tagSlug } from "../data/content";
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  date?: Date;
+  tags?: string[];
+  kind?: string;
+  rotation?: string;
+}
+
+const {
+  title,
+  description,
+  href,
+  date,
+  tags = [],
+  kind,
+  rotation = "-0.6deg",
+} = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const dateLabel = date?.toLocaleDateString("es-AR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
+---
+
+<article class="card rel" style={`transform:rotate(${rotation})`}>
+  <div class="pp"></div>
+  <div class="in">
+    <div class="meta">
+      {date && <time class="date" datetime={date.toISOString().slice(0, 10)}>{dateLabel}</time>}
+      {kind && <span class="tg">{kind}</span>}
+    </div>
+    <h2 class="card-title"><a href={`${base}${href}`}>{title}</a></h2>
+    <p>{description}</p>
+    {tags.length > 0 && (
+      <ul class="card-tags" aria-label="Etiquetas">
+        {tags.map((tag) => (
+          <li><a class="tg lima" href={`${base}/etiquetas/${tagSlug(tag)}.html`}>{tag}</a></li>
+        ))}
+      </ul>
+    )}
+  </div>
+</article>
+
+<style>
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 4px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .card-tags a {
+    text-decoration: none;
+  }
+</style>

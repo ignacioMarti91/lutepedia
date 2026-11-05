@@ -1,0 +1,101 @@
+---
+import { getCollection } from "astro:content";
+import EntryCard from "../components/EntryCard.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { newestFirst, postKindLabels } from "../data/content";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const stories = newestFirst(await getCollection("posts", ({ data }) => !data.draft && data.kind === "relato"));
+const classes = newestFirst(await getCollection("classes", ({ data }) => !data.draft));
+---
+
+<SiteLayout
+  title="Blog · Relatos y clases"
+  description="Relatos, fichas de autor y materiales de clase de Lucía Tedesco."
+  currentPage="blog"
+>
+  <section class="wrap">
+    <p class="crumbs"><a href={`${base}/index.html`}>Inicio</a> / Blog</p>
+    <p class="hand kicker">Apuntes, historias y cosas para volver a mirar</p>
+    <h1 class="page-title"><span class="w" style="transform:rotate(-1deg)">El blog</span></h1>
+    <p class="lead">Un cuaderno abierto en dos direcciones: relatos para leer sin apuro y materiales de clase para pensar, enseñar y compartir.</p>
+    <nav aria-label="Secciones del blog" class="filters">
+      <a href="#relatos">Relatos</a>
+      <a href="#clases">Clases</a>
+    </nav>
+
+    <section id="relatos" class="content-section">
+      <div class="section-heading">
+        <div><p class="hand kicker">Escritura literaria</p><h2>Relatos</h2></div>
+      </div>
+      <div class="grid">
+        {stories.map((entry) => (
+          <EntryCard
+            title={entry.data.title}
+            description={entry.data.description}
+            date={entry.data.pubDate}
+            tags={entry.data.tags}
+            kind={postKindLabels[entry.data.kind]}
+            href={`/pieza/${entry.id}.html`}
+          />
+        ))}
+      </div>
+      {stories.length === 0 && <p class="empty-state">El cuaderno queda abierto para la próxima historia.</p>}
+    </section>
+
+    <section id="clases" class="content-section">
+      <div class="section-heading">
+        <div><p class="hand kicker">Comunicación · Periodismo · Marketing</p><h2>Clases</h2></div>
+        <p class="section-lead">Fichas de autores, apuntes y materiales pensados para estudiantes y docentes.</p>
+      </div>
+      <div class="grid">
+        {classes.map((entry) => (
+          <EntryCard
+            title={entry.data.title}
+            description={entry.data.description}
+            date={entry.data.pubDate}
+            tags={entry.data.tags}
+            kind="Ficha de clase"
+            href={`/clases/${entry.id}.html`}
+          />
+        ))}
+      </div>
+      {classes.length === 0 && (
+        <div class="notebook rel">
+          <div class="pp"></div>
+          <div class="in">
+            <p class="hand">Una ficha por autor o autora</p>
+            <h3>Una idea, un contexto, una conversación</h3>
+            <p><strong>Idea central.</strong> El concepto que organiza la obra o el método de la persona estudiada.</p>
+            <p><strong>Por qué importa hoy.</strong> Qué puede aportar a quienes estudian comunicación, periodismo o marketing.</p>
+            <p><strong>En el aula.</strong> Un fragmento, pregunta o ejercicio para llevar la idea a la práctica.</p>
+            <p><strong>Para seguir.</strong> Lecturas, recursos y otras fichas relacionadas.</p>
+          </div>
+        </div>
+      )}
+    </section>
+  </section>
+</SiteLayout>
+
+<style>
+  .kicker { margin: 0 0 8px; color: #4a4466; font-size: 26px; }
+  .content-section { margin-top: 56px; }
+  .section-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 8px 24px; margin-bottom: 24px; }
+  .section-heading h2 {
+    margin: 0;
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .section-lead { max-width: 32em; margin: 0; }
+  .empty-state { padding: 24px; border: 2px dashed #4a4466; color: #4a4466; }
+  .notebook { max-width: 900px; margin: 0 auto; transform: rotate(-0.4deg); }
+  .notebook .in { padding: 30px 36px 30px 78px; background: repeating-linear-gradient(transparent 0 33px, rgba(36,71,201,.22) 33px 34px); }
+  .notebook .in::before { position: absolute; top: 0; bottom: 0; left: 54px; width: 2px; background: #d8341c; content: ""; }
+  .notebook .hand { margin: 0; color: #4a4466; font-size: 26px; }
+  .notebook h3 { margin: 0 0 12px; font-family: "Abril Fatface", Georgia, serif; font-size: 38px; font-weight: 400; line-height: 1.05; }
+  .notebook p { margin: 0; line-height: 34px; }
+  .notebook p:last-child { color: #2447c9; font-family: "Caveat", cursive; font-size: 24px; }
+  @media (max-width: 720px) { .notebook .in { padding: 24px 20px 24px 46px; } .notebook .in::before { left: 30px; } .notebook h3 { font-size: 30px; } }
+</style>

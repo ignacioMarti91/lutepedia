@@ -1,0 +1,113 @@
+---
+import { getCollection, render } from "astro:content";
+import EntryCard from "../../components/EntryCard.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { newestFirst, postKindLabels } from "../../data/content";
+
+export async function getStaticPaths() {
+  const [posts, classes] = await Promise.all([
+    getCollection("posts", ({ data }) => !data.draft),
+    getCollection("classes", ({ data }) => !data.draft),
+  ]);
+
+  return [
+    ...posts.map((entry) => ({
+      params: { collection: "pieza", slug: entry.id },
+      props: { entry },
+    })),
+    ...classes.map((entry) => ({
+      params: { collection: "clases", slug: entry.id },
+      props: { entry },
+    })),
+  ];
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const isClass = entry.collection === "classes";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const [posts, classes] = await Promise.all([
+  getCollection("posts", ({ data }) => !data.draft),
+  getCollection("classes", ({ data }) => !data.draft),
+]);
+const relatedEntries = newestFirst([...posts, ...classes])
+  .filter((candidate) => candidate.id !== entry.id && entry.data.related.includes(candidate.id))
+  .slice(0, 3);
+const kindLabel = isClass ? "Ficha de clase" : postKindLabels[entry.data.kind];
+const backHref = isClass ? `${base}/blog.html#clases` : `${base}/listado.html`;
+const formattedDate = entry.data.pubDate.toLocaleDateString("es-AR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC",
+});
+---
+
+<SiteLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  currentPage={isClass ? "blog" : "periodismo"}
+>
+  <article class="wrap narrow">
+    <p class="crumbs"><a href={`${base}/index.html`}>Inicio</a> / <a href={backHref}>{isClass ? "Clases" : "Periodismo"}</a> / {entry.data.title}</p>
+    <div class="paper rel">
+      <div class="pp"></div><div class="tape"></div>
+      <div class="in">
+        <div class="meta"><span class="tg">{kindLabel}</span>{entry.data.tags.map((tag) => <span class="tg lima">{tag}</span>)}</div>
+        <h1 class="page-title">{entry.data.title}</h1>
+        <p class="byline">
+          Por {entry.data.author} · <time datetime={entry.data.pubDate.toISOString().slice(0, 10)}>{formattedDate}</time>
+        </p>
+        {isClass && (
+          <aside class="class-summary">
+            <p><strong>Idea central.</strong> {entry.data.centralIdea}</p>
+            <p><strong>Por qué importa hoy.</strong> {entry.data.whyToday}</p>
+            <blockquote>{entry.data.classExcerpt}</blockquote>
+          </aside>
+        )}
+        <div class="prose"><Content /></div>
+        {entry.data.youtubeId && (
+          <div class="video">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${entry.data.youtubeId}`}
+              title={`Video: ${entry.data.title}`}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        )}
+        <p class="license"><strong>Licencia:</strong> {entry.data.license}. Autoría: {entry.data.author}. Publicado el {formattedDate}. Los textos pueden tener asistencia de IA, aclarada en la nota editorial.</p>
+      </div>
+    </div>
+    {relatedEntries.length > 0 && (
+      <section class="related" aria-labelledby="related-title">
+        <h2 id="related-title">Para seguir leyendo</h2>
+        <div class="grid">
+          {relatedEntries.map((related) => (
+            <EntryCard
+              title={related.data.title}
+              description={related.data.description}
+              date={related.data.pubDate}
+              tags={related.data.tags}
+              kind={related.collection === "classes" ? "Ficha de clase" : postKindLabels[related.data.kind]}
+              href={`/${related.collection === "classes" ? "clases" : "pieza"}/${related.id}.html`}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+</SiteLayout>
+
+<style>
+  .paper .tape { top: -14px; left: 50%; margin-left: -56px; transform: rotate(-3deg); }
+  .paper .in { padding: 44px 48px 40px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .page-title { overflow-wrap: anywhere; font-size: clamp(38px, 6vw, 68px); }
+  .class-summary { max-width: 38em; margin: 0 0 28px; padding: 18px 22px; background: #f8f2e2; }
+  .class-summary p { margin: 0 0 12px; }
+  .class-summary blockquote { margin: 18px 0 0; padding: 6px 0 6px 18px; border-left: 5px solid #d8341c; font-size: 22px; font-style: italic; }
+  @media (max-width: 720px) { .paper .in { padding: 28px 22px; } }
+</style>

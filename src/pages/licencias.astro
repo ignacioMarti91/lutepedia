@@ -1,0 +1,15 @@
+---
+import LegalPlaceholder from "../components/LegalPlaceholder.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<SiteLayout title="Licencias" description="Información sobre autoría y permisos de uso de los contenidos de Lutepedia.">
+  <LegalPlaceholder
+    title="Licencias"
+    description="Cada pieza tendrá una licencia visible, junto con su autoría y fecha de publicación."
+    note="El tipo de licencia de cada contenido está pendiente de definición. Antes del lanzamiento, se revisarán los derechos de autor, materiales de terceros y permisos de publicación."
+    base={base}
+  />
+</SiteLayout>

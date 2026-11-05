@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  note: string;
+  base: string;
+}
+
+const { title, description, note, base } = Astro.props;
+---
+
+<section class="wrap narrow">
+  <p class="crumbs"><a href={`${base}/index.html`}>Inicio</a> / {title}</p>
+  <h1 class="page-title">{title}</h1>
+  <p class="lead">{description}</p>
+  <div class="paper rel notice">
+    <div class="pp"></div>
+    <div class="in">
+      <p class="hand">En preparación</p>
+      <p>{note}</p>
+      <p class="warning">Esta página es un aviso de preparación, no reemplaza el documento final ni una revisión profesional.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .notice { padding: 28px; }
+  .notice .hand { margin: 0 0 12px; color: #4a4466; font-size: 30px; }
+  .notice p:last-child { margin-bottom: 0; }
+  .warning { color: #4a4466; font-size: 16px; }
+</style>

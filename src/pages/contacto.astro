@@ -1,0 +1,30 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<SiteLayout
+  title="Contacto"
+  description="Contactá a Lucía Tedesco para servicios, clases, prensa o colaboraciones."
+  currentPage="contacto"
+>
+  <section class="wrap narrow">
+    <p class="crumbs"><a href={`${base}/index.html`}>Inicio</a> / Contacto</p>
+    <h1 class="page-title">Contacto</h1>
+    <p class="lead">Para trabajar juntas, invitarme a dar una clase o simplemente decir hola.</p>
+    <div class="paper rel contact-note">
+      <div class="pp"></div><div class="in">
+        <p class="hand">La puerta está abierta.</p>
+        <p>El canal de contacto se configurará antes del lanzamiento. Mientras tanto, podés explorar los <a href={`${base}/produccion.html`}>servicios de producción</a> o las <a href={`${base}/blog.html#clases`}>fichas de clase</a>.</p>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .contact-note { padding: 32px; }
+  .contact-note .hand { margin: 0 0 12px; color: #4a4466; font-size: 30px; }
+  .contact-note p:last-child { margin-bottom: 0; }
+  .contact-note a { color: #2447c9; }
+</style>

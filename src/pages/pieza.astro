@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const posts = await getCollection("posts", ({ data }) => !data.draft);
+const classes = await getCollection("classes", ({ data }) => !data.draft);
+const firstEntry = [...posts, ...classes]
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())[0];
+const destination = firstEntry
+  ? `${base}/${firstEntry.collection === "classes" ? "clases" : "pieza"}/${firstEntry.id}.html`
+  : `${base}/listado.html`;
+---
+
+<SiteLayout title="Piezas" description="Notas, relatos y fichas de clase de Lutepedia.">
+  <section class="wrap narrow">
+    <h1 class="page-title">Piezas de Lutepedia</h1>
+    <p class="lead">Si no se abre automáticamente, seguí el enlace para ver el contenido publicado.</p>
+    <a class="btn secondary" href={destination}>Ir a las publicaciones</a>
+  </section>
+</SiteLayout>

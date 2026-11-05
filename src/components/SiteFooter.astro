@@ -1,0 +1,155 @@
+---
+interface Props {
+  base: string;
+}
+
+const { base } = Astro.props;
+---
+
+<section class="rip site-footer">
+  <div class="newsletter">
+    <div class="newsletter-copy">
+      <h2>Una carta cuando hay algo nuevo.</h2>
+      <p>Crónicas, clases y lo que ando leyendo. Sin frecuencia fija y sin relleno.</p>
+    </div>
+    <div class="newsletter-form">
+      <label for="email-news">Tu email</label>
+      <div class="newsletter-controls">
+        <div class="newsletter-input"><input id="email-news" name="email" type="email" placeholder="nombre@correo.com" disabled></div>
+        <button type="button" class="btn newsletter-button" disabled>Próximamente</button>
+      </div>
+      <p class="newsletter-notice">El newsletter se activará junto con su servicio y el <a href={`${base}/privacidad.html`}>aviso de privacidad</a>.</p>
+    </div>
+  </div>
+  <footer class="footer-bottom">
+    <a class="footer-brand" href={`${base}/index.html`}>Lutepedia</a>
+    <nav aria-label="Pie">
+      <a href={`${base}/licencias.html`}>Licencias</a>
+      <a href={`${base}/privacidad.html`}>Privacidad</a>
+      <a href={`${base}/terminos.html`}>Términos</a>
+      <a href="#" aria-label="Canal de YouTube (enlace pendiente)">YouTube</a>
+      <a href="#email-news">Newsletter</a>
+    </nav>
+    <p class="editorial-note">Ninguna imagen de este sitio está generada con IA. Los textos pueden tener asistencia de IA, y así se aclara en la nota editorial.</p>
+  </footer>
+</section>
+
+<style>
+  .site-footer {
+    position: relative;
+    z-index: 5;
+    padding: 96px 48px 40px;
+    background: #1c1b2e;
+    color: #f8f2e2;
+  }
+
+  .newsletter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px 64px;
+    padding-bottom: 56px;
+  }
+
+  .newsletter-copy,
+  .newsletter-form {
+    flex: 1 1 360px;
+    min-width: 0;
+  }
+
+  .newsletter-copy h2 {
+    margin: 0 0 14px;
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.02;
+  }
+
+  .newsletter-copy p {
+    max-width: 26em;
+    margin: 0;
+    color: #d9d2e8;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .newsletter-form label,
+  .footer-bottom {
+    font-family: "Special Elite", "Courier New", monospace;
+  }
+
+  .newsletter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .newsletter-input {
+    flex: 1 1 240px;
+    min-width: 0;
+  }
+
+  .newsletter-button {
+    border-color: #f8f2e2;
+    background: #ebb01e;
+    color: #1c1b2e;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 #f8f2e2;
+  }
+
+  .newsletter-notice,
+  .editorial-note {
+    margin: 0;
+    color: #d9d2e8;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .newsletter-notice a,
+  .footer-bottom nav a {
+    color: #f8f2e2;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px 36px;
+    padding-top: 26px;
+    border-top: 2px dashed #5a5478;
+    font-size: 15px;
+  }
+
+  .footer-brand {
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: 30px;
+    text-decoration: none;
+  }
+
+  .footer-bottom nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+
+  .editorial-note {
+    width: 100%;
+    color: #b9b1d0;
+    font-size: 14px;
+  }
+
+  @media (max-width: 720px) {
+    .site-footer {
+      padding: 72px 20px 32px;
+    }
+
+    .newsletter-copy h2 {
+      font-size: 44px;
+    }
+  }
+</style>

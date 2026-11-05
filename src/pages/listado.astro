@@ -1,0 +1,85 @@
+---
+import { getCollection } from "astro:content";
+import EntryCard from "../components/EntryCard.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { newestFirst, postKindLabels, tagSlug } from "../data/content";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const posts = newestFirst(
+  await getCollection("posts", ({ data }) => !data.draft && ["cronica", "radar"].includes(data.kind)),
+);
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))].sort((a, b) => a.localeCompare(b, "es"));
+---
+
+<SiteLayout
+  title="Periodismo · Crónicas y Radar"
+  description="Crónicas periodísticas y una selección de lecturas y temas en el Radar de Lucía Tedesco."
+  currentPage="periodismo"
+>
+  <section class="wrap">
+    <p class="crumbs"><a href={`${base}/index.html`}>Inicio</a> / Periodismo</p>
+    <h1 class="page-title"><span class="w" style="transform:rotate(-1deg)">Periodismo</span></h1>
+    <p class="lead">El anecdotario de lo que pasó al salir a buscar la nota y una curaduría de temas para seguir mirando.</p>
+    <nav aria-label="Subsecciones" class="filters">
+      <a href="#cronicas">Crónicas</a>
+      <a href="#radar">Radar</a>
+    </nav>
+    {tags.length > 0 && (
+      <ul class="filters" aria-label="Filtrar por etiqueta">
+        {tags.map((tag) => (
+          <li><a href={`${base}/etiquetas/${tagSlug(tag)}.html`}>{tag}</a></li>
+        ))}
+      </ul>
+    )}
+    <section id="cronicas" class="content-section">
+      <h2>Crónicas</h2>
+      <div class="grid">
+        {posts.filter((post) => post.data.kind === "cronica").map((post) => (
+          <EntryCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.pubDate}
+            tags={post.data.tags}
+            kind={postKindLabels[post.data.kind]}
+            href={`/pieza/${post.id}.html`}
+          />
+        ))}
+      </div>
+      {posts.every((post) => post.data.kind !== "cronica") && (
+        <p class="empty-state">Las primeras crónicas aparecerán aquí.</p>
+      )}
+    </section>
+    <section id="radar" class="content-section">
+      <h2>Radar</h2>
+      <p class="section-lead">Enlaces, lecturas y pistas sobre los temas que sigo.</p>
+      <div class="grid">
+        {posts.filter((post) => post.data.kind === "radar").map((post) => (
+          <EntryCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.pubDate}
+            tags={post.data.tags}
+            kind={postKindLabels[post.data.kind]}
+            href={`/pieza/${post.id}.html`}
+          />
+        ))}
+      </div>
+      {posts.every((post) => post.data.kind !== "radar") && (
+        <p class="empty-state">El Radar se está preparando.</p>
+      )}
+    </section>
+  </section>
+</SiteLayout>
+
+<style>
+  .content-section { margin-top: 52px; }
+  .content-section h2 {
+    margin: 0 0 18px;
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .section-lead { margin: 0 0 24px; }
+  .empty-state { padding: 24px; border: 2px dashed #4a4466; color: #4a4466; }
+</style>

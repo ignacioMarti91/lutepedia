@@ -1,0 +1,93 @@
+---
+import { getCollection } from "astro:content";
+import EntryCard from "../components/EntryCard.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { newestFirst, projectKindLabels } from "../data/content";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const projects = newestFirst(await getCollection("projects", ({ data }) => !data.draft));
+const sections = [
+  { id: "negocios", title: "Negocios", description: "Estrategia, publicidad y marketing, también para experiencias presenciales." },
+  { id: "digital", title: "Digital", description: "Fotografía, redes, sitios web y campañas publicitarias." },
+  { id: "audiovisual", title: "Audiovisual", description: "Video y otros formatos, desde la idea hasta la pieza final." },
+] as const;
+---
+
+<SiteLayout
+  title="Producción · Portfolio"
+  description="Portfolio de producción de Lucía Tedesco: estrategia, proyectos digitales y producción audiovisual."
+  currentPage="produccion"
+>
+  <section class="wrap">
+    <p class="crumbs"><a href={`${base}/index.html`}>Inicio</a> / Producción</p>
+    <p class="hand kicker">Ideas que pasan del cuaderno al mundo</p>
+    <h1 class="page-title"><span class="w" style="transform:rotate(-1deg)">Producción</span></h1>
+    <p class="lead">Proyectos de estrategia, comunicación y contenidos para marcas, medios y organizaciones. Un portfolio para contar el desafío, el proceso y el trabajo realizado.</p>
+    <nav aria-label="Áreas de producción" class="filters">
+      {sections.map((section) => <a href={`#${section.id}`}>{section.title}</a>)}
+    </nav>
+
+    {sections.map((section) => {
+      const sectionProjects = projects.filter((project) => project.data.kind === section.id);
+      return (
+        <section id={section.id} class="project-section">
+          <div class="section-heading">
+            <div><p class="hand">{projectKindLabels[section.id]}</p><h2>{section.title}</h2></div>
+            <p>{section.description}</p>
+          </div>
+          {sectionProjects.length > 0 ? (
+            <div class="grid">
+              {sectionProjects.map((project) => (
+                <EntryCard
+                  title={project.data.title}
+                  description={project.data.description}
+                  date={project.data.pubDate}
+                  tags={project.data.tags}
+                  kind={projectKindLabels[project.data.kind]}
+                  href={`/casos/${project.id}.html`}
+                />
+              ))}
+            </div>
+          ) : (
+            <p class="empty-state">Los casos de esta área se publicarán cuando estén revisados y autorizados.</p>
+          )}
+        </section>
+      );
+    })}
+  </section>
+  <section class="contact-cta">
+    <div class="paper rel">
+      <div class="pp"></div><div class="tape"></div>
+      <div class="in">
+        <p class="hand">El detrás de escena también importa</p>
+        <h2>¿Tenés un proyecto entre manos?</h2>
+        <p>Cada caso se publica con la autorización correspondiente y los resultados que se puedan compartir.</p>
+        <a href={`${base}/contacto.html`} class="btn primary">Hablemos de tu proyecto</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+<style>
+  .kicker { margin: 0 0 8px; color: #4a4466; font-size: 26px; }
+  .project-section { margin-top: 52px; }
+  .section-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 8px 24px; margin-bottom: 24px; }
+  .section-heading .hand { margin: 0; color: #4a4466; font-size: 24px; }
+  .section-heading h2 {
+    margin: 0;
+    font-family: "Abril Fatface", Georgia, serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .section-heading > p { max-width: 32em; margin: 0; }
+  .empty-state { padding: 22px; border: 2px dashed #4a4466; color: #4a4466; }
+  .contact-cta { position: relative; z-index: 5; padding: 0 48px 88px; }
+  .contact-cta .paper { max-width: 900px; margin: 0 auto; transform: rotate(-0.3deg); }
+  .contact-cta .in { padding: 34px 38px; }
+  .contact-cta .tape { top: -14px; left: 50%; margin-left: -56px; transform: rotate(-2deg); }
+  .contact-cta .hand { margin: 0; color: #4a4466; font-size: 25px; }
+  .contact-cta h2 { margin: 0 0 12px; font-family: "Abril Fatface", Georgia, serif; font-size: clamp(34px, 5vw, 52px); font-weight: 400; line-height: 1; }
+  .contact-cta .btn { margin-top: 10px; }
+  @media (max-width: 720px) { .contact-cta { padding-right: 20px; padding-left: 20px; } .contact-cta .in { padding: 28px 22px; } }
+</style>

@@ -1,0 +1,57 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<SiteLayout
+  title="Sobre mí"
+  description="Lucía Tedesco: periodista, productora, docente y consultora de marketing."
+  currentPage="sobre-mi"
+>
+  <section class="wrap">
+    <p class="crumbs"><a href={`${base}/index.html`}>Inicio</a> / Sobre mí</p>
+    <div class="cols">
+      <div class="rel profile-card">
+        <div class="pp"></div><div class="tape"></div>
+        <div class="in"><div class="ph">[Ilustración o foto de perfil unificada]</div></div>
+      </div>
+      <div class="intro">
+        <h1 class="page-title">Sobre mí</h1>
+        <p class="lead">Soy Lucía Tedesco: periodista, productora de contenidos, docente y consultora de marketing. Lutepedia es mi archivo y mi portfolio, con autoría y fecha.</p>
+      </div>
+    </div>
+    <h2 class="h2 services-title">Servicios</h2>
+    <div class="services">
+      <article class="card rel"><div class="pp"></div><div class="in"><h3>Periodismo y contenidos</h3><p>Notas, crónicas y producción de contenidos para medios y marcas.</p></div></article>
+      <article class="card rel"><div class="pp"></div><div class="in"><h3>Marketing y estrategia</h3><p>Consultoría, publicidad y marketing, también presencial.</p></div></article>
+      <article class="card rel"><div class="pp"></div><div class="in"><h3>Clases y talleres</h3><p>Docencia en comunicación, periodismo y marketing.</p></div></article>
+    </div>
+    <h2 class="h2">CV</h2>
+    <div class="paper rel cv-placeholder">
+      <div class="pp"></div><div class="in">
+        <p class="hand">La trayectoria detallada se completa con la información validada por Lucía.</p>
+      </div>
+    </div>
+    <p class="contact-link"><a class="btn primary" href={`${base}/contacto.html`}>Escribime</a></p>
+  </section>
+</SiteLayout>
+
+<style>
+  .profile-card { flex: 0 1 340px; transform: rotate(-1.8deg); }
+  .profile-card .in { padding: 22px; }
+  .profile-card .tape { top: -14px; left: 50%; margin-left: -56px; }
+  .profile-card .ph { min-height: 360px; }
+  .intro { flex: 1 1 440px; min-width: 0; }
+  .intro .lead { margin-bottom: 0; }
+  .services-title { margin-top: 72px; }
+  .services .card:nth-child(1) { transform: rotate(-0.8deg); }
+  .services .card:nth-child(2) { transform: rotate(0.7deg); }
+  .services .card:nth-child(3) { transform: rotate(-0.5deg); }
+  .services h3 { margin: 0; font-family: "Abril Fatface", Georgia, serif; font-size: 30px; font-weight: 400; line-height: 1.05; }
+  .services p { margin: 0; }
+  .cv-placeholder { max-width: 760px; padding: 24px; }
+  .cv-placeholder p { margin: 0; color: #4a4466; font-size: 24px; }
+  .contact-link { margin-top: 44px; }
+  @media (max-width: 720px) { .profile-card { flex-basis: 100%; max-width: 360px; } .profile-card .ph { min-height: 280px; } }
+</style>

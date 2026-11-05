@@ -1,0 +1,15 @@
+---
+import LegalPlaceholder from "../components/LegalPlaceholder.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<SiteLayout title="Términos" description="Términos de uso de Lutepedia, pendientes de revisión para el lanzamiento.">
+  <LegalPlaceholder
+    title="Términos"
+    description="Las condiciones de uso del sitio se publicarán antes de su lanzamiento definitivo."
+    note="La versión final deberá explicar el uso permitido de los contenidos, enlaces externos, canales de contacto y cualquier servicio que se incorpore."
+    base={base}
+  />
+</SiteLayout>

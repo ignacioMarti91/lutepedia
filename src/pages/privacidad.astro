@@ -1,0 +1,15 @@
+---
+import LegalPlaceholder from "../components/LegalPlaceholder.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<SiteLayout title="Privacidad" description="Información en preparación sobre privacidad y tratamiento de datos en Lutepedia.">
+  <LegalPlaceholder
+    title="Privacidad"
+    description="La privacidad de quienes visitan y se comunican con Lutepedia importa."
+    note="Esta página se completará cuando se definan el alojamiento, las herramientas de analítica, el formulario de contacto y el servicio de newsletter. El sitio no debe recopilar datos hasta que esos usos y sus avisos estén configurados."
+    base={base}
+  />
+</SiteLayout>
