@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lutepedia, inicio</title>
+<meta name="description" content="Lutepedia: periodismo, clases y otras obsesiones, de Lucía Tedesco.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@500;700&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="pg" style="position:relative;width:100%;background:#EEE4CE;color:#1C1B2E;font-family:'Newsreader',Georgia,serif;font-size:19px;line-height:1.6;overflow:hidden">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="rough" x="-6%" y="-6%" width="112%" height="112%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="7"></feDisplacementMap></filter>
+  <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="3" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="4"></feDisplacementMap></filter>
+  <filter id="grainf" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix values="0 0 0 0 .33  0 0 0 0 .25  0 0 0 0 .14  0 0 0 .5 0"></feColorMatrix></filter>
+</svg>
+<svg class="grain" aria-hidden="true" focusable="false"><rect width="100%" height="100%" filter="url(#grainf)"></rect></svg>
+
+<!-- Cabecera -->
+<header style="position:relative;z-index:5;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding:18px 48px;border-bottom:4px double #1C1B2E">
+  <a href="index.html" style="font-family:'Abril Fatface',Georgia,serif;font-size:40px;line-height:1;text-decoration:none;letter-spacing:-.01em">Lutepedia</a>
+  <nav class="nav" aria-label="Principal" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px">
+    <a href="listado.html">Periodismo</a>
+    <a href="listado.html">Producción</a>
+    <a href="listado.html">Blog</a>
+    <a href="sobre-mi.html">Sobre mí</a>
+    <a href="contacto.html">Contacto</a>
+    <!-- Lugar reservado para sumar Talleres, recursos y tienda sin rediseñar -->
+    <span class="hand" style="font-size:22px;color:#4A4466;border:2px dashed #4A4466;padding:0 12px;transform:rotate(-2deg)">talleres y tienda, pronto</span>
+  </nav>
+</header>
+
+<!-- Portada -->
+<section id="main" style="position:relative;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:48px;padding:64px 48px 72px">
+  <div style="flex:1 1 620px;min-width:0">
+    <h1 style="margin:0;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:clamp(52px,8.4vw,120px);line-height:.98;letter-spacing:-.02em">
+      <span class="w" style="transform:rotate(-1.6deg)">Periodismo,</span>
+      <span class="w" style="transform:rotate(1.2deg) translateY(8px);color:#2447C9">clases</span>
+      <span class="w" style="transform:rotate(-.8deg)">y otras</span>
+      <span class="w" style="transform:rotate(1.8deg) translateY(4px)">obsesiones.</span>
+    </h1>
+    <svg viewBox="0 0 600 30" aria-hidden="true" focusable="false" style="display:block;width:min(560px,90%);height:auto;margin-top:6px;filter:url(#wob)"><path d="M4 18 C60 4 90 28 150 14 S250 6 300 18 S420 28 470 12 S560 8 596 16" fill="none" stroke="#D8341C" stroke-width="7" stroke-linecap="round"></path></svg>
+    <p style="margin:30px 0 32px;max-width:32em;font-size:22px;line-height:1.55">Soy Lucía Tedesco: periodista, productora de contenidos, docente y consultora de marketing. Este es el archivo de lo que escribo, produzco y enseño, con autoría y fecha.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <a class="btn" href="listado.html" style="background:#D8341C;color:#fff">Leer las crónicas</a>
+      <a class="btn" href="listado.html" style="background:#F8F2E2;color:#1C1B2E">Ver las clases</a>
+    </div>
+  </div>
+
+  <!-- Ilustración (placeholder dibujado a mano; reemplazar por ilustración de la clienta o encargada) -->
+  <div class="rel" style="flex:0 1 420px;min-width:260px;transform:rotate(2.4deg);margin:0 auto">
+    <div class="pp"></div>
+    <div class="tape" style="top:-14px;left:50%;margin-left:-56px;transform:rotate(-4deg)"></div>
+    <div class="in" style="padding:22px 22px 18px">
+      <svg viewBox="0 0 400 470" role="img" aria-label="Ilustración de Lucía: una lectora con un cuaderno abierto y un lápiz en la oreja" style="display:block;width:100%;height:auto;filter:url(#wob)">
+        <circle cx="200" cy="236" r="178" fill="#F3A9C8"></circle>
+        <g stroke="#1C1B2E" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M96 220 C86 110 138 52 204 52 C276 52 318 112 304 220 C310 292 294 338 270 350 L130 350 C106 338 92 292 96 220 Z" fill="#2447C9"></path>
+          <path d="M172 280 L228 280 L232 342 L168 342 Z" fill="#F4C9A6"></path>
+          <path d="M52 470 C56 380 118 336 200 336 C282 336 344 380 348 470 Z" fill="#D8341C"></path>
+          <path d="M166 338 L200 382 L234 338 Z" fill="#F8F2E2"></path>
+          <path d="M128 178 C128 120 162 98 200 98 C240 98 274 122 274 178 C274 238 242 292 200 292 C160 292 128 238 128 178 Z" fill="#F4C9A6"></path>
+          <path d="M118 188 C112 104 160 74 206 76 C256 78 292 112 284 190 C270 150 246 128 212 124 C196 148 160 164 118 188 Z" fill="#2447C9"></path>
+          <path d="M120 190 C114 240 122 286 142 312 L156 272 C142 244 140 214 146 184 Z" fill="#2447C9"></path>
+          <path d="M282 190 C288 240 280 286 260 312 L246 272 C260 244 262 214 256 184 Z" fill="#2447C9"></path>
+          <g transform="rotate(-22 270 150)"><rect x="264" y="92" width="13" height="86" fill="#EBB01E"></rect><rect x="264" y="92" width="13" height="13" fill="#F3A9C8"></rect><path d="M264 178 L270.5 196 L277 178 Z" fill="#F4C9A6"></path></g>
+          <ellipse cx="171" cy="206" rx="17" ry="21" fill="#fff"></ellipse>
+          <ellipse cx="229" cy="206" rx="17" ry="21" fill="#fff"></ellipse>
+          <ellipse cx="172" cy="210" rx="11" ry="15" fill="#1C1B2E"></ellipse>
+          <ellipse cx="228" cy="210" rx="11" ry="15" fill="#1C1B2E"></ellipse>
+          <circle cx="167" cy="203" r="4.5" fill="#fff" stroke="none"></circle>
+          <circle cx="223" cy="203" r="4.5" fill="#fff" stroke="none"></circle>
+          <circle cx="177" cy="217" r="2" fill="#fff" stroke="none"></circle>
+          <circle cx="233" cy="217" r="2" fill="#fff" stroke="none"></circle>
+          <path d="M151 201 C156 183 186 183 190 201" fill="none" stroke-width="6"></path>
+          <path d="M210 201 C214 183 244 183 249 201" fill="none" stroke-width="6"></path>
+          <path d="M152 172 q18 -10 34 -2 M214 170 q16 -8 34 2" fill="none"></path>
+          <ellipse cx="154" cy="246" rx="14" ry="7" fill="#F3A9C8" stroke="none"></ellipse>
+          <ellipse cx="246" cy="246" rx="14" ry="7" fill="#F3A9C8" stroke="none"></ellipse>
+          <path d="M146 240 l5 10 M156 240 l5 10 M238 240 l5 10 M248 240 l5 10" fill="none" stroke-width="2.5"></path>
+          <path d="M200 228 q-6 10 4 11" fill="none" stroke-width="3"></path>
+          <path d="M186 258 q7 9 14 0 q7 9 14 0" fill="none" stroke-width="3.5"></path>
+          <g transform="rotate(-6 207 428)">
+            <rect x="110" y="366" width="194" height="128" fill="#F8F2E2"></rect>
+            <path d="M126 394 H288 M126 416 H288 M126 438 H262" fill="none" stroke-width="2.5"></path>
+            <path d="M134 394 l34 -5 -32 9 42 -5" fill="none" stroke="#D8341C" stroke-width="3.5"></path>
+            <g fill="#1C1B2E" stroke="none"><circle cx="128" cy="366" r="4"></circle><circle cx="156" cy="366" r="4"></circle><circle cx="184" cy="366" r="4"></circle><circle cx="212" cy="366" r="4"></circle><circle cx="240" cy="366" r="4"></circle><circle cx="268" cy="366" r="4"></circle></g>
+          </g>
+          <ellipse cx="112" cy="440" rx="24" ry="18" fill="#F4C9A6"></ellipse>
+          <ellipse cx="302" cy="432" rx="24" ry="18" fill="#F4C9A6"></ellipse>
+        </g>
+        <path d="M342 84 Q345 104 366 108 Q345 112 342 132 Q339 112 318 108 Q339 104 342 84Z" fill="#EBB01E" stroke="#1C1B2E" stroke-width="3" stroke-linejoin="round"></path>
+        <path d="M60 150 Q62 164 76 166 Q62 170 60 184 Q58 170 44 166 Q58 164 60 150Z" fill="#8A7BD0" stroke="#1C1B2E" stroke-width="3" stroke-linejoin="round"></path>
+      </svg>
+      <p class="hand" style="margin:8px 0 0;font-size:26px;line-height:1.1;color:#4A4466">yo, dibujada (sin foto)</p>
+    </div>
+    <div style="position:absolute;z-index:4;right:-18px;top:34px;transform:rotate(9deg);width:98px;height:98px;border-radius:50%;background:#EBB01E;border:2.5px solid #1C1B2E;display:grid;place-items:center;text-align:center;font-family:'Special Elite','Courier New',monospace;font-size:15px;line-height:1.15;box-shadow:3px 3px 0 #1C1B2E">hecho<br>a mano</div>
+  </div>
+</section>
+
+<div class="hz" aria-hidden="true" style="position:relative;z-index:5"></div>
+
+<!-- Piezas destacadas -->
+<section style="position:relative;z-index:5;padding:80px 48px 72px">
+  <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px;margin-bottom:44px">
+    <h2 style="margin:0;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:64px;line-height:1">Lo último</h2>
+    <span class="hand" style="font-size:28px;color:#4A4466;transform:rotate(-2deg)">elegido a mano, sin algoritmo</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:36px;align-items:stretch">
+    <article class="rel" style="flex:2 1 560px;min-width:0;transform:rotate(-.6deg)">
+      <div class="pp"></div>
+      <div class="tape" style="top:-14px;left:36px;transform:rotate(-5deg)"></div>
+      <div class="in" style="padding:30px 30px 28px;display:flex;flex-direction:column;gap:16px">
+        <div style="height:230px;border:2.5px dashed #1C1B2E;display:flex;align-items:flex-end;padding:14px;font-family:'Special Elite','Courier New',monospace;font-size:15px;color:#4A4466;background:repeating-linear-gradient(135deg,transparent 0 12px,rgba(28,27,46,.12) 12px 13px),#EEE4CE">[Ilustración o fotografía propia de la pieza]</div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+          <span style="font-family:'Special Elite','Courier New',monospace;font-size:15px;color:#4A4466">[fecha]</span>
+          <span class="tg" style="transform:rotate(-1.5deg)">reportaje</span>
+          <span class="tg" style="transform:rotate(1deg);background:#D8F24A">territorio</span>
+        </div>
+        <h3 class="card-title" style="margin:0;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:44px;line-height:1.02"><a href="pieza.html">[Título de la crónica destacada]</a></h3>
+        <p style="margin:0;max-width:34em">Dos o tres líneas que cuentan la escena, el lugar y lo que no entró en la nota original.</p>
+      </div>
+    </article>
+    <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:36px">
+      <article class="rel" style="transform:rotate(.8deg)">
+        <div class="pp"></div>
+        <div class="tape" style="top:-14px;right:30px;transform:rotate(4deg)"></div>
+        <div class="in" style="padding:26px 26px 24px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px"><span style="font-family:'Special Elite','Courier New',monospace;font-size:15px;color:#4A4466">[fecha]</span><span class="tg" style="transform:rotate(1.5deg);background:#EBB01E">relato</span></div>
+          <h3 class="card-title" style="margin:0;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:32px;line-height:1.05"><a href="pieza.html">[Título del relato]</a></h3>
+          <p style="margin:0;font-size:17px">Primeras líneas o idea del cuento, sin spoilers.</p>
+        </div>
+      </article>
+      <article class="rel" style="transform:rotate(-.9deg)">
+        <div class="pp"></div>
+        <div class="in" style="padding:26px 26px 24px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px"><span style="font-family:'Special Elite','Courier New',monospace;font-size:15px;color:#4A4466">[fecha]</span><span class="tg" style="transform:rotate(-1deg);background:var(--lav,#E9E3FF)">autores</span></div>
+          <h3 class="card-title" style="margin:0;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:32px;line-height:1.05"><a href="pieza.html">[Ficha: autor o autora]</a></h3>
+          <p style="margin:0;font-size:17px">Idea central y por qué importa hoy.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Accesos a las secciones -->
+<section style="position:relative;z-index:5;padding:24px 48px 88px">
+  <h2 style="margin:0 0 44px;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:64px;line-height:1">Por dónde empezar</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:32px">
+    <a href="listado.html" class="rel" style="flex:1 1 240px;min-width:0;text-decoration:none;color:#1C1B2E;transform:rotate(-1deg)">
+      <div class="pp"></div>
+      <div class="in">
+        <div style="background:#D8341C;color:#fff;padding:16px 22px 12px;font-family:'Abril Fatface',Georgia,serif;font-size:36px;line-height:1">Periodismo</div>
+        <div style="padding:20px 22px 24px">
+          <p class="hand" style="margin:0;font-size:28px;line-height:1.1;text-decoration:underline;text-decoration-color:#D8341C;text-decoration-thickness:3px">Crónicas</p>
+          <p style="margin:2px 0 14px;font-size:16px;line-height:1.45">El anecdotario de lo que pasó cuando salió a buscar la nota.</p>
+          <p class="hand" style="margin:0;font-size:28px;line-height:1.1;text-decoration:underline;text-decoration-color:#D8341C;text-decoration-thickness:3px">Radar</p>
+          <p style="margin:2px 0 0;font-size:16px;line-height:1.45">Links y curaduría de los temas que sigue.</p>
+        </div>
+      </div>
+    </a>
+    <a href="listado.html" class="rel" style="flex:1 1 240px;min-width:0;text-decoration:none;color:#1C1B2E;transform:rotate(.8deg)">
+      <div class="pp"></div>
+      <div class="in">
+        <div style="background:#2447C9;color:#fff;padding:16px 22px 12px;font-family:'Abril Fatface',Georgia,serif;font-size:36px;line-height:1">Producción</div>
+        <div style="padding:20px 22px 24px">
+          <p class="hand" style="margin:0;font-size:28px;line-height:1.1;text-decoration:underline;text-decoration-color:#2447C9;text-decoration-thickness:3px">Negocios</p>
+          <p style="margin:2px 0 10px;font-size:16px;line-height:1.45">Estrategia, publicidad y marketing, también presencial.</p>
+          <p class="hand" style="margin:0;font-size:28px;line-height:1.1;text-decoration:underline;text-decoration-color:#2447C9;text-decoration-thickness:3px">Digital</p>
+          <p style="margin:2px 0 10px;font-size:16px;line-height:1.45">Fotografía, redes, webs y ads.</p>
+          <p class="hand" style="margin:0;font-size:28px;line-height:1.1;text-decoration:underline;text-decoration-color:#2447C9;text-decoration-thickness:3px">Audiovisual</p>
+          <p style="margin:2px 0 0;font-size:16px;line-height:1.45">Video y otros formatos.</p>
+        </div>
+      </div>
+    </a>
+    <a href="listado.html" class="rel" style="flex:1 1 240px;min-width:0;text-decoration:none;color:#1C1B2E;transform:rotate(-.6deg)">
+      <div class="pp"></div>
+      <div class="in">
+        <div style="background:#EBB01E;color:#1C1B2E;padding:16px 22px 12px;font-family:'Abril Fatface',Georgia,serif;font-size:36px;line-height:1">Blog</div>
+        <div style="padding:20px 22px 24px">
+          <p class="hand" style="margin:0;font-size:28px;line-height:1.1;text-decoration:underline;text-decoration-color:#EBB01E;text-decoration-thickness:3px">Relatos</p>
+          <p style="margin:2px 0 14px;font-size:16px;line-height:1.45">Escritura literaria.</p>
+          <p class="hand" style="margin:0;font-size:28px;line-height:1.1;text-decoration:underline;text-decoration-color:#EBB01E;text-decoration-thickness:3px">Clases</p>
+          <p style="margin:2px 0 0;font-size:16px;line-height:1.45">Fichas de autores, apuntes y material de clase.</p>
+        </div>
+      </div>
+    </a>
+    <a href="listado.html" class="rel" style="flex:1 1 240px;min-width:0;text-decoration:none;color:#1C1B2E;transform:rotate(1.1deg)">
+      <div class="pp"></div>
+      <div class="in">
+        <div style="background:#F3A9C8;color:#1C1B2E;padding:16px 22px 12px;font-family:'Abril Fatface',Georgia,serif;font-size:36px;line-height:1">Sobre mí</div>
+        <div style="padding:20px 22px 24px">
+          <p class="hand" style="margin:0;font-size:28px;line-height:1.1;text-decoration:underline;text-decoration-color:#F3A9C8;text-decoration-thickness:3px">CV</p>
+          <p style="margin:2px 0 14px;font-size:16px;line-height:1.45">Trayectoria periodística, docente y de producción.</p>
+          <p class="hand" style="margin:0;font-size:28px;line-height:1.1;text-decoration:underline;text-decoration-color:#F3A9C8;text-decoration-thickness:3px">Servicios</p>
+          <p style="margin:2px 0 0;font-size:16px;line-height:1.45">Qué puedo hacer por tu marca o tu medio.</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Clases: ficha de autor -->
+<section style="position:relative;z-index:5;padding:8px 48px 88px;display:flex;flex-wrap:wrap;align-items:center;gap:48px">
+  <div style="flex:1 1 360px;min-width:0">
+    <h2 style="margin:0 0 18px;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:64px;line-height:1">Las clases, en fichas</h2>
+    <p style="margin:0 0 28px;max-width:28em;font-size:21px">Una ficha por autor o autora: la idea central, por qué importa hoy y un fragmento de la clase. Para estudiar, o para dar clase.</p>
+    <a class="btn" href="listado.html" style="background:#2447C9;color:#fff">Ver todas las fichas</a>
+  </div>
+  <article class="rel" style="flex:1.2 1 460px;min-width:0;transform:rotate(1.2deg)">
+    <div class="pp"></div>
+    <div class="tape" style="top:-14px;left:50%;margin-left:-56px;transform:rotate(3deg)"></div>
+    <div class="in" style="padding:34px 32px 30px 84px;background:repeating-linear-gradient(transparent 0 33px,rgba(36,71,201,.25) 33px 34px);">
+      <div aria-hidden="true" style="position:absolute;left:58px;top:0;bottom:0;width:2px;background:#D8341C"></div>
+      <p class="hand" style="margin:0;font-size:26px;color:#4A4466;line-height:34px">Ficha de clase</p>
+      <h3 style="margin:0 0 8px;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:40px;line-height:1.05">[Nombre del autor o autora]</h3>
+      <p style="margin:0;font-size:18px;line-height:34px"><strong style="font-weight:600">Idea central.</strong> La idea que resume su obra o su método, en tres líneas.</p>
+      <p style="margin:0;font-size:18px;line-height:34px"><strong style="font-weight:600">Por qué importa hoy.</strong> Qué le dice a quien estudia comunicación, periodismo o marketing.</p>
+      <p style="margin:0;font-size:18px;line-height:34px"><strong style="font-weight:600">Fragmento de clase.</strong> Un tramo de la clase, con el tono del aula.</p>
+      <p class="hand" style="margin:0;font-size:26px;line-height:34px;color:#2447C9">otras fichas: [autor 2], [autor 3]</p>
+    </div>
+  </article>
+</section>
+
+<!-- YouTube -->
+<section style="position:relative;z-index:5;padding:0 48px 96px;display:flex;flex-wrap:wrap;align-items:center;gap:48px">
+  <div class="crt" role="img" aria-label="Lugar reservado para el video destacado del canal de YouTube" style="flex:1.3 1 520px;min-width:0;aspect-ratio:16/9;border:3px solid #1C1B2E;box-shadow:8px 8px 0 #1C1B2E;position:relative;display:grid;place-items:center;transform:rotate(-.8deg)">
+    <div style="width:0;height:0;border-left:56px solid #EBB01E;border-top:34px solid transparent;border-bottom:34px solid transparent;filter:drop-shadow(4px 0 0 rgba(216,52,28,.8))"></div>
+    <span style="position:absolute;left:16px;bottom:12px;font-family:'Special Elite','Courier New',monospace;font-size:15px;color:#fff">[Video destacado del canal]</span>
+    <span aria-hidden="true" style="position:absolute;left:0;right:0;top:34%;height:10px;background:rgba(255,255,255,.12);transform:translateX(10px)"></span>
+  </div>
+  <div style="flex:1 1 300px;min-width:0">
+    <h2 style="margin:0 0 14px;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:56px;line-height:1">En el canal</h2>
+    <p style="margin:0 0 26px;max-width:26em">Videos y entrevistas, además de lo que se publica por escrito.</p>
+    <a class="btn" href="#" style="background:#1C1B2E;color:#F8F2E2">Ir a YouTube</a>
+  </div>
+</section>
+
+<!-- Newsletter + pie -->
+<section class="rip" style="position:relative;z-index:5;background:#1C1B2E;color:#F8F2E2;padding:96px 48px 40px">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:40px 64px;padding-bottom:56px">
+    <div style="flex:1 1 360px;min-width:0">
+      <h2 style="margin:0 0 14px;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:56px;line-height:1.02">Una carta cuando hay algo nuevo.</h2>
+      <p style="margin:0;max-width:26em;color:#D9D2E8">Crónicas, clases y lo que ando leyendo. Sin frecuencia fija y sin relleno.</p>
+    </div>
+    <form style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:14px">
+      <label for="email-news" style="font-family:'Special Elite','Courier New',monospace;font-size:16px">Tu email</label>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <div style="flex:1 1 240px;min-width:0"><input id="email-news" type="email" placeholder="nombre@correo.com"></div>
+        <button type="submit" class="btn" style="background:#EBB01E;color:#1C1B2E;cursor:pointer;border-color:#F8F2E2;box-shadow:4px 4px 0 #F8F2E2">Suscribirme</button>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:#D9D2E8">Uso tu email solo para enviarte el newsletter. Podés darte de baja cuando quieras. Más en el <a href="#" style="color:#F8F2E2">aviso de privacidad</a>.</p>
+    </form>
+  </div>
+  <footer style="border-top:2px dashed #5A5478;padding-top:26px;display:flex;flex-wrap:wrap;gap:14px 36px;align-items:baseline;justify-content:space-between;font-family:'Special Elite','Courier New',monospace;font-size:15px">
+    <a href="index.html" style="font-family:'Abril Fatface',Georgia,serif;font-size:30px;text-decoration:none">Lutepedia</a>
+    <nav aria-label="Pie" style="display:flex;flex-wrap:wrap;gap:8px 24px"><a href="#" style="color:#F8F2E2">Licencias</a><a href="#" style="color:#F8F2E2">Privacidad</a><a href="#" style="color:#F8F2E2">Términos</a><a href="#" style="color:#F8F2E2">YouTube</a><a href="#" style="color:#F8F2E2">Newsletter</a></nav>
+    <p style="margin:0;width:100%;font-size:14px;line-height:1.5;color:#B9B1D0">Ninguna imagen de este sitio está generada con IA. Los textos pueden tener asistencia de IA, y así se aclara en la nota editorial.</p>
+  </footer>
+</section>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>

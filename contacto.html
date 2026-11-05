@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto · Lutepedia</title>
+<meta name="description" content="Escribile a Lucía Tedesco.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@500;700&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="pg" style="position:relative;width:100%;background:#EEE4CE;color:#1C1B2E;font-family:'Newsreader',Georgia,serif;font-size:19px;line-height:1.6;overflow:hidden">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="rough" x="-6%" y="-6%" width="112%" height="112%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="7"></feDisplacementMap></filter>
+  <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="3" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="4"></feDisplacementMap></filter>
+  <filter id="grainf" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix values="0 0 0 0 .33  0 0 0 0 .25  0 0 0 0 .14  0 0 0 .5 0"></feColorMatrix></filter>
+</svg>
+<svg class="grain" aria-hidden="true" focusable="false"><rect width="100%" height="100%" filter="url(#grainf)"></rect></svg>
+
+<header style="position:relative;z-index:5;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding:18px 48px;border-bottom:4px double #1C1B2E">
+  <a href="index.html" style="font-family:'Abril Fatface',Georgia,serif;font-size:40px;line-height:1;text-decoration:none;letter-spacing:-.01em">Lutepedia</a>
+  <nav class="nav" aria-label="Principal" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px">
+    <a href="listado.html">Periodismo</a>
+    <a href="listado.html">Producción</a>
+    <a href="listado.html">Blog</a>
+    <a href="sobre-mi.html">Sobre mí</a>
+    <a href="contacto.html" aria-current="page">Contacto</a>
+    <!-- Lugar reservado para sumar Talleres, recursos y tienda sin rediseñar -->
+    <span class="hand" style="font-size:22px;color:#4A4466;border:2px dashed #4A4466;padding:0 12px;transform:rotate(-2deg)">talleres y tienda, pronto</span>
+  </nav>
+</header>
+<main id="main">
+<section class="wrap narrow">
+  <p class="crumbs"><a href="index.html">Inicio</a> / Contacto</p>
+  <h1 class="page-title">Contacto</h1>
+  <p class="lead">Para trabajar juntos, invitarme a dar una clase o simplemente decir hola.</p>
+  <div class="paper rel"><div class="pp"></div><div class="in">
+    <form id="contact" novalidate>
+      <div class="field"><label for="nombre">Nombre</label><input id="nombre" name="nombre" required autocomplete="name"></div>
+      <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+      <div class="field"><label for="motivo">Motivo</label><select id="motivo" name="motivo"><option>Servicios</option><option>Clases o talleres</option><option>Prensa</option><option>Otro</option></select></div>
+      <div class="field"><label for="msg">Mensaje</label><textarea id="msg" name="msg" required></textarea></div>
+      <button type="submit" class="btn" style="background:#D8341C;color:#fff;cursor:pointer">Enviar</button>
+      <p class="ok" id="ok" role="status">¡Gracias! Te respondo pronto.</p>
+    </form>
+  </div></div>
+</section>
+</main>
+
+<!-- Newsletter + pie -->
+<section class="rip" style="position:relative;z-index:5;background:#1C1B2E;color:#F8F2E2;padding:96px 48px 40px">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:40px 64px;padding-bottom:56px">
+    <div style="flex:1 1 360px;min-width:0">
+      <h2 style="margin:0 0 14px;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:56px;line-height:1.02">Una carta cuando hay algo nuevo.</h2>
+      <p style="margin:0;max-width:26em;color:#D9D2E8">Crónicas, clases y lo que ando leyendo. Sin frecuencia fija y sin relleno.</p>
+    </div>
+    <form style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:14px">
+      <label for="email-news" style="font-family:'Special Elite','Courier New',monospace;font-size:16px">Tu email</label>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <div style="flex:1 1 240px;min-width:0"><input id="email-news" type="email" placeholder="nombre@correo.com"></div>
+        <button type="submit" class="btn" style="background:#EBB01E;color:#1C1B2E;cursor:pointer;border-color:#F8F2E2;box-shadow:4px 4px 0 #F8F2E2">Suscribirme</button>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:#D9D2E8">Uso tu email solo para enviarte el newsletter. Podés darte de baja cuando quieras. Más en el <a href="#" style="color:#F8F2E2">aviso de privacidad</a>.</p>
+    </form>
+  </div>
+  <footer style="border-top:2px dashed #5A5478;padding-top:26px;display:flex;flex-wrap:wrap;gap:14px 36px;align-items:baseline;justify-content:space-between;font-family:'Special Elite','Courier New',monospace;font-size:15px">
+    <a href="index.html" style="font-family:'Abril Fatface',Georgia,serif;font-size:30px;text-decoration:none">Lutepedia</a>
+    <nav aria-label="Pie" style="display:flex;flex-wrap:wrap;gap:8px 24px"><a href="#" style="color:#F8F2E2">Licencias</a><a href="#" style="color:#F8F2E2">Privacidad</a><a href="#" style="color:#F8F2E2">Términos</a><a href="#" style="color:#F8F2E2">YouTube</a><a href="#" style="color:#F8F2E2">Newsletter</a></nav>
+    <p style="margin:0;width:100%;font-size:14px;line-height:1.5;color:#B9B1D0">Ninguna imagen de este sitio está generada con IA. Los textos pueden tener asistencia de IA, y así se aclara en la nota editorial.</p>
+  </footer>
+</section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

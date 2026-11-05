@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Título de la pieza] · Lutepedia</title>
+<meta name="description" content="Pieza individual de Lutepedia con autoría, fecha y licencia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@500;700&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="pg" style="position:relative;width:100%;background:#EEE4CE;color:#1C1B2E;font-family:'Newsreader',Georgia,serif;font-size:19px;line-height:1.6;overflow:hidden">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="rough" x="-6%" y="-6%" width="112%" height="112%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="7" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="7"></feDisplacementMap></filter>
+  <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="3" result="n"></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="4"></feDisplacementMap></filter>
+  <filter id="grainf" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix values="0 0 0 0 .33  0 0 0 0 .25  0 0 0 0 .14  0 0 0 .5 0"></feColorMatrix></filter>
+</svg>
+<svg class="grain" aria-hidden="true" focusable="false"><rect width="100%" height="100%" filter="url(#grainf)"></rect></svg>
+
+<header style="position:relative;z-index:5;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px;padding:18px 48px;border-bottom:4px double #1C1B2E">
+  <a href="index.html" style="font-family:'Abril Fatface',Georgia,serif;font-size:40px;line-height:1;text-decoration:none;letter-spacing:-.01em">Lutepedia</a>
+  <nav class="nav" aria-label="Principal" style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px">
+    <a href="listado.html" aria-current="page">Periodismo</a>
+    <a href="listado.html">Producción</a>
+    <a href="listado.html">Blog</a>
+    <a href="sobre-mi.html">Sobre mí</a>
+    <a href="contacto.html">Contacto</a>
+    <!-- Lugar reservado para sumar Talleres, recursos y tienda sin rediseñar -->
+    <span class="hand" style="font-size:22px;color:#4A4466;border:2px dashed #4A4466;padding:0 12px;transform:rotate(-2deg)">talleres y tienda, pronto</span>
+  </nav>
+</header>
+<main id="main">
+<article class="wrap narrow">
+  <p class="crumbs"><a href="index.html">Inicio</a> / <a href="listado.html">Crónicas</a> / Pieza</p>
+  <div class="paper rel"><div class="pp"></div><div class="tape" style="top:-14px;left:50%;margin-left:-56px;transform:rotate(-3deg)"></div>
+  <div class="in">
+    <div class="meta" style="margin-bottom:14px"><span class="tg">reportaje</span><span class="tg lima">territorio</span></div>
+    <h1 class="page-title" style="font-size:clamp(38px,6vw,68px)">[Título de la pieza]</h1>
+    <p class="byline">Por Lucía Tedesco · <time datetime="2026-01-01">[fecha]</time> · [x] min de lectura</p>
+    <div class="prose">
+      <p>Primer párrafo de la pieza. Acá va la escena, con un ancho de línea cómodo y buen contraste: la textura nunca compite con el texto.</p>
+      <p>Segundo párrafo. Los textos largos usan la serif editorial; la máquina de escribir y la manuscrita quedan para los detalles.</p>
+      <h2>Un intertítulo</h2>
+      <blockquote>Una cita destacada, como subrayada en el margen del cuaderno.</blockquote>
+      <p>Más texto. Los enlaces internos llevan a <a href="pieza.html">piezas relacionadas</a>.</p>
+      <div class="video"><iframe src="about:blank" title="[Video de YouTube de la pieza]" loading="lazy" allowfullscreen></iframe></div>
+      <p>Cierre de la pieza.</p>
+    </div>
+    <ul class="filters" style="margin:28px 0 0" aria-label="Etiquetas"><li><a href="#">#territorio</a></li><li><a href="#">#Lucía Tedesco</a></li><li><a href="#">#2026</a></li></ul>
+    <p class="license"><strong>Licencia:</strong> [Creative Commons Atribución / Todos los derechos reservados]. Autoría: Lucía Tedesco. Publicado el [fecha]. <a href="#">Más sobre licencias</a>. Los textos pueden tener asistencia de IA, aclarada en la nota editorial.</p>
+  </div></div>
+  <section class="related" aria-labelledby="rel"><h2 id="rel">Para seguir leyendo</h2><div class="grid"><article class="card rel" style="transform:rotate(-0.6deg)"><div class="pp"></div>
+  <div class="in"><div class="ph" style="min-height:140px">[Imagen de la pieza]</div>
+  <div class="meta"><span class="date">[fecha]</span><span class="tg lima">reportaje</span></div>
+  <h3 class="card-title"><a href="pieza.html">[Pieza relacionada 1]</a></h3><p>Extracto breve.</p></div></article><article class="card rel" style="transform:rotate(0.8deg)"><div class="pp"></div>
+  <div class="in"><div class="ph" style="min-height:140px">[Imagen de la pieza]</div>
+  <div class="meta"><span class="date">[fecha]</span><span class="tg mostaza">crónica</span></div>
+  <h3 class="card-title"><a href="pieza.html">[Pieza relacionada 2]</a></h3><p>Extracto breve.</p></div></article><article class="card rel" style="transform:rotate(-0.8deg)"><div class="pp"></div>
+  <div class="in"><div class="ph" style="min-height:140px">[Imagen de la pieza]</div>
+  <div class="meta"><span class="date">[fecha]</span><span class="tg lav">autores</span></div>
+  <h3 class="card-title"><a href="pieza.html">[Pieza relacionada 3]</a></h3><p>Extracto breve.</p></div></article></div></section>
+</article>
+</main>
+
+<!-- Newsletter + pie -->
+<section class="rip" style="position:relative;z-index:5;background:#1C1B2E;color:#F8F2E2;padding:96px 48px 40px">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:40px 64px;padding-bottom:56px">
+    <div style="flex:1 1 360px;min-width:0">
+      <h2 style="margin:0 0 14px;font-family:'Abril Fatface',Georgia,serif;font-weight:400;font-size:56px;line-height:1.02">Una carta cuando hay algo nuevo.</h2>
+      <p style="margin:0;max-width:26em;color:#D9D2E8">Crónicas, clases y lo que ando leyendo. Sin frecuencia fija y sin relleno.</p>
+    </div>
+    <form style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:14px">
+      <label for="email-news" style="font-family:'Special Elite','Courier New',monospace;font-size:16px">Tu email</label>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <div style="flex:1 1 240px;min-width:0"><input id="email-news" type="email" placeholder="nombre@correo.com"></div>
+        <button type="submit" class="btn" style="background:#EBB01E;color:#1C1B2E;cursor:pointer;border-color:#F8F2E2;box-shadow:4px 4px 0 #F8F2E2">Suscribirme</button>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:#D9D2E8">Uso tu email solo para enviarte el newsletter. Podés darte de baja cuando quieras. Más en el <a href="#" style="color:#F8F2E2">aviso de privacidad</a>.</p>
+    </form>
+  </div>
+  <footer style="border-top:2px dashed #5A5478;padding-top:26px;display:flex;flex-wrap:wrap;gap:14px 36px;align-items:baseline;justify-content:space-between;font-family:'Special Elite','Courier New',monospace;font-size:15px">
+    <a href="index.html" style="font-family:'Abril Fatface',Georgia,serif;font-size:30px;text-decoration:none">Lutepedia</a>
+    <nav aria-label="Pie" style="display:flex;flex-wrap:wrap;gap:8px 24px"><a href="#" style="color:#F8F2E2">Licencias</a><a href="#" style="color:#F8F2E2">Privacidad</a><a href="#" style="color:#F8F2E2">Términos</a><a href="#" style="color:#F8F2E2">YouTube</a><a href="#" style="color:#F8F2E2">Newsletter</a></nav>
+    <p style="margin:0;width:100%;font-size:14px;line-height:1.5;color:#B9B1D0">Ninguna imagen de este sitio está generada con IA. Los textos pueden tener asistencia de IA, y así se aclara en la nota editorial.</p>
+  </footer>
+</section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
